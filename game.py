@@ -14,7 +14,7 @@ class Game:
         self.field = ''
         self.max_errors = 6
         self.error_hangman_state = ''
-        self.hangman_drawer = DrawHangman()
+       # self.hangman_drawer = 
         a = ord('а')
         self.alphabet = ''.join([chr(i) for i in range(a,a+6)] + [chr(a+33)] + [chr(i) for i in range(a+6,a+32)])
     
@@ -24,12 +24,11 @@ class Game:
         self.error_chars = []
         self.is_started = True
         self.word = Word_Generator().generate_word()
-        print(self.word)
         self.field = list('_' * len(self.word))
         while self.is_started:
             if self.error_count > 0:
                 print(self.error_hangman_state)
-            print(f'Прогресс {"".join(self.field)}        Количество ошибок: {self.error_count}')
+            print('\n' + f'Прогресс {"".join(self.field)}        Количество ошибок: {self.error_count}')
             try:
                 user_char = input('Введи букву: ').lower()
                 if len(user_char) > 1:
@@ -60,7 +59,7 @@ class Game:
                 print(f'Буквы {user_char} нет в загаданном слове, ты ошибся :(')
                 self.error_count += 1
                 self.error_chars.append(user_char)
-                self.error_hangman_state = self.hangman_drawer.get_hangmang_state(self.error_count)
+                self.error_hangman_state = DrawHangman().get_hangman_state(self.error_count)
                 if self.error_count == self.max_errors:
                     print(self.error_hangman_state)
                     print('Слишком много ошибок, игра окончена! :(')

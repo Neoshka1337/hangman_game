@@ -8,20 +8,27 @@ class DrawHangman:
         self.body_with_hands = '/[ ]' + chr(92) + '\n'
         self.left_leg = ' |'
         self.legs = ' | | '
+
+
     def one_error(self):
         return (self.line + self.head).rstrip()
+    
     def two_errors(self):
         return (self.line + self.head + self.body).rstrip()
+    
     def three_errors(self):
         return (self.line + self.head + self.body_with_left_hand).rstrip()
+    
     def four_errors(self):
         return (self.line + self.head + self.body_with_hands).rstrip()
+    
     def five_errors(self):
         return (self.line + self.head + self.body_with_hands + self.left_leg).rstrip()
+    
     def six_errors(self):
         return (self.line + self.finish_head + self.body_with_hands + self.legs).rstrip()
 
-    def get_hangmang_state(self, error_count):
+    def get_hangman_state(self, error_count):
         if error_count == 1:
             return self.one_error()
         elif error_count == 2:
