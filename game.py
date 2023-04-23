@@ -24,7 +24,7 @@ class Game:
         self.word = Word_Generator().generate_word()
         self.field = list('_' * len(self.word))
 
-    def game_process(self):
+    def start_game(self):
         self.initialize_game()
         while self.is_started:
             if self.error_count > 0:
